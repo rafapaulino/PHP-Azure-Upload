@@ -1,0 +1,23 @@
+{
+    "name": "rafapaulino/php-azure-upload",
+    "description": "PHP Azure Upload",
+    "type": "Library",
+    "license": "BSD-3",
+    "version":"1.0",
+    "authors": [
+        {
+            "name": "Rafael Paulino",
+            "email": "rafaclasses@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.2",
+        "microsoft/windowsazure": "^0.5.7"
+    },
+    "autoload": {
+        "psr-4":{
+            "PHPAzureUpload\\":"src/"
+        }
+    }
+}
