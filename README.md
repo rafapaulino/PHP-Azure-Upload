@@ -4,7 +4,7 @@ Simple upload to azure blob:
 
 ## Features
 
-- `v1.0.*` Library Initial Design.
+- `v1.0.*` Library Initial Design and bugs correct.
 
 
 ### Important informations
