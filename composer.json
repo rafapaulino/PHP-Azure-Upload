@@ -2,7 +2,7 @@
     "name": "rafapaulino/php-azure-upload",
     "description": "PHP Azure Upload",
     "type": "Library",
-    "license": "BSD-3",
+    "license": "MIT",
     "authors": [
         {
             "name": "Rafael Paulino",
