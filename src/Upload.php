@@ -141,7 +141,7 @@ class Upload
 		    	'fileUrl' => $file['file']
 			);
 			
-			if ($json)
+			if ($this->json)
 			return $this->sendJsonResponse($message);
 			else 
 			return $message;
@@ -159,7 +159,7 @@ class Upload
 		    	'message' => $error_message
 			);
 			
-			if ($json)
+			if ($this->json)
 			return $this->sendJsonResponse($message);
 			else 
 			return $message;
@@ -201,7 +201,7 @@ class Upload
 		    );
 		}
 
-		if ($json)
+		if ($this->json)
 		return $this->sendJsonResponse($message);
 		else 
 		return $message;
@@ -236,7 +236,7 @@ class Upload
 		    );
 		}
 		
-		if ($json)
+		if ($this->json)
 		return $this->sendJsonResponse($message);
 		else 
 		return $message;
@@ -273,7 +273,7 @@ class Upload
 		    );
 		}
 		
-		if ($json)
+		if ($this->json)
 		return $this->sendJsonResponse($message);
 		else 
 		return $message;
