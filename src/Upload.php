@@ -16,13 +16,15 @@ class Upload
 	private $accountContainer;
 	private $accountUrl;
     private $proxy;
-    private $containers;
+	private $containers;
+	private $json;
     
-    public function __construct($accountName, $accountKey, $accountContainer, $accountUrl)
+    public function __construct($accountName, $accountKey, $accountContainer, $accountUrl, $json = false)
     {
         $this->accountName = $accountName;
         $this->accountKey = $accountKey;
-        $this->accountUrl = $accountUrl;
+		$this->accountUrl = $accountUrl;
+		$this->json = $json;
 
         $this->connectionString = "DefaultEndpointsProtocol=http;AccountName=" . $this->getAccountName() . ";AccountKey=" . $this->getAccountKey() . ""; 
 
@@ -137,8 +139,12 @@ class Upload
 		    	'status' => 'success',
 		    	'fileBlobUrl' => $file['blob'],
 		    	'fileUrl' => $file['file']
-		    );
-		    return $this->sendJsonResponse($message);
+			);
+			
+			if ($json)
+			return $this->sendJsonResponse($message);
+			else 
+			return $message;
 
 		} catch(ServiceException $e) {
 		    // Handle exception based on error codes and messages.
@@ -151,8 +157,12 @@ class Upload
 		    	'status' => 'error',
 		    	'code' => $code,
 		    	'message' => $error_message
-		    );
-		    return $this->sendJsonResponse($message);
+			);
+			
+			if ($json)
+			return $this->sendJsonResponse($message);
+			else 
+			return $message;
 		}
     }
 
@@ -190,7 +200,11 @@ class Upload
 		    	'message' => $error_message
 		    );
 		}
+
+		if ($json)
 		return $this->sendJsonResponse($message);
+		else 
+		return $message;
     }
     
     public function copyFile($source, $copy)
@@ -221,7 +235,11 @@ class Upload
 		    	'message' => $error_message
 		    );
 		}
+		
+		if ($json)
 		return $this->sendJsonResponse($message);
+		else 
+		return $message;
     }
     
     public function renameFile($source, $rename)
@@ -254,6 +272,10 @@ class Upload
 		    	'message' => $error_message
 		    );
 		}
+		
+		if ($json)
 		return $this->sendJsonResponse($message);
+		else 
+		return $message;
 	}
 }
