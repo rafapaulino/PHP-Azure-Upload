@@ -3,7 +3,6 @@
     "description": "PHP Azure Upload",
     "type": "Library",
     "license": "BSD-3",
-    "version":"1.0",
     "authors": [
         {
             "name": "Rafael Paulino",
