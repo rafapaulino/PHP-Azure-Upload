@@ -4,6 +4,7 @@ Simple upload to azure blob:
 
 ## Features
 
+- `v2.0.*` Change Library Design.
 - `v1.0.*` Library Initial Design and bugs correct.
 
 
@@ -21,29 +22,36 @@ Install: composer require rafapaulino/php-azure-upload
 ```php
 <?php
 
-require '../vendor/autoload.php';
+require 'vendor/autoload.php';
 
-use PHPAzureUpload\Upload;
+use PHPAzureUpload\Connection;
+use PHPAzureUpload\Factory;
 
-$upload = new PHPAzureUpload\Upload(
-    "accountName",
-    "accountKey",
-    "accountContainer",
-    "accountUrl"
-);
-	
+$connection = new Connection;
+$connection->setConnectionString("conectionstring")
+->setAccountName("accountname")
+->setAccountKey("accountkey")
+->setProtocol("https");
+
+$factory = new Factory($connection, "http://accounturl");
+$factory->setContainer("extranet");
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     
+    echo '<pre>';
     $file = $_FILES['userfile']['tmp_name'];
     $name = trim(strtolower($_FILES['userfile']['name']));
     $name = str_replace(" ", "-", $name);
 
     print_r($_FILES);
 
-    $upload->sendFile($file, $name);
-    exit;
-}
+    $result = $factory->create($file, $name);
 
+    var_dump($result);
+    echo '</pre>';
+
+}
+?>
 <form enctype="multipart/form-data" action="" method="POST">
 
     File: <input name="userfile" type="file" />
